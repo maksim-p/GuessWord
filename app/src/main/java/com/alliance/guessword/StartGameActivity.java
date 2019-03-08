@@ -2,21 +2,15 @@ package com.alliance.guessword;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class StartGameActivity extends AppCompatActivity {
 
     TextView teamOne;
     TextView teamTwo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,5 +35,6 @@ public class StartGameActivity extends AppCompatActivity {
     public void startRound(View view) {
         Intent intent = new Intent(this, GameRoundActivity.class);
         startActivity(intent);
+
     }
 }
