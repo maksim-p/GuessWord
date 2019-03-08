@@ -13,21 +13,23 @@ public class GameRoundActivity extends AppCompatActivity {
 
     TextView timer;
     ProgressBar timerBar;
-    TextView easyWordText;
+    TextView easyWordText, hardWordText, celebrityText, proverbText;
 
     DBHelper dbHelper;
 
-    public void getTheWord(String query, String level){
+    String word = "";
+
+    public String getTheWord(String table, String column){
+        String query = "SELECT " + column + " FROM " + table + " ORDER BY RANDOM() LIMIT 1";
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery(query, null);
         if (cursor.moveToNext()) {
-            int wordIndex = cursor.getColumnIndex(level);
-            easyWordText.setText(cursor.getString(wordIndex));
-            Log.d("mLog", "word: " + cursor.getString(wordIndex));
+            int wordIndex = cursor.getColumnIndex(column);
+            word = cursor.getString(wordIndex);
         } else
-            easyWordText.setText("no nouns");
-            Log.d("mLog", "no nouns");
+            word = "no words";
         cursor.close();
+        return word;
     }
 
     @Override
@@ -39,10 +41,18 @@ public class GameRoundActivity extends AppCompatActivity {
         timerBar = findViewById(R.id.timerBar);
 
         easyWordText = findViewById(R.id.easyWordText);
+        hardWordText = findViewById(R.id.hardWordText);
+        celebrityText = findViewById(R.id.celebrityText);
+        proverbText = findViewById(R.id.proverbText);
 
         dbHelper = new DBHelper(this);
 
-        getTheWord("SELECT noun FROM nouns ORDER BY RANDOM() LIMIT 1", "noun");
+
+        easyWordText.setText(getTheWord("easyWords", "easyWord"));
+        hardWordText.setText(getTheWord("easyWords", "easyWord"));
+        celebrityText.setText(getTheWord("easyWords", "easyWord"));
+        proverbText.setText(getTheWord("easyWords", "easyWord"));
+
         Timer();
     }
 
