@@ -7,7 +7,7 @@
     tools:context=".GameRoundActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/teamNameText"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/countText"
         android:layout_width="65dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -27,7 +27,7 @@
         android:text="Count"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="@+id/teamNameText" />
 
     <ProgressBar
         android:id="@+id/timerBar"
