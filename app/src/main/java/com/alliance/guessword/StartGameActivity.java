@@ -78,7 +78,7 @@ public class StartGameActivity extends AppCompatActivity {
         }
 
         currentTeam = (currentTeam + 1) % teams.size();
-        teamStart.setText("Начинает команда '" + teams.get(currentTeam).getName() + "'");
+        teamStart.setText("Начинает ход команда '" + teams.get(currentTeam).getName() + "'");
 
     }
 

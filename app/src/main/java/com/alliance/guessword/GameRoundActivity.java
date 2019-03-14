@@ -1,11 +1,14 @@
 package com.alliance.guessword;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -60,10 +63,15 @@ public class GameRoundActivity extends AppCompatActivity {
         proverb.setText(getTheWord("easyWords", "easyWord"));
 
         Timer();
+
+        ObjectAnimator anim = ObjectAnimator.ofInt(timerBar, "progress", 60, 0);
+        anim.setDuration(59000);
+        anim.setInterpolator(new LinearInterpolator());
+        anim.start();
     }
 
     public void Timer() {
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int second = (int) (millisUntilFinished/1000);
@@ -73,7 +81,7 @@ public class GameRoundActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                timer.setText("-");
+                timer.setText("0");
                 Intent intent = new Intent();
                 intent.putExtra("count", 50);
                 setResult(RESULT_OK, intent);

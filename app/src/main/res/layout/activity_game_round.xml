@@ -4,48 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_color"
     tools:context=".GameRoundActivity">
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle" />
 
     <TextView
         android:id="@+id/teamNameText"
-        android:layout_width="125dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="Team Name"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
+        android:textColor="@color/bluePrimary"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+        app:layout_constraintStart_toStartOf="@+id/imageView11"
+        app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
     <TextView
         android:id="@+id/countText"
-        android:layout_width="65dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:text="Count"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Score"
+        android:textAlignment="textEnd"
+        android:textColor="@color/bluePrimary"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/teamNameText"
+        app:layout_constraintEnd_toEndOf="@+id/imageView11"
         app:layout_constraintTop_toTopOf="@+id/teamNameText" />
 
     <ProgressBar
         android:id="@+id/timerBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:max="60"
+        android:background="@drawable/circular_progress_bar_bg"
+        android:progressDrawable="@drawable/circular_progress_bar"
+        app:layout_constraintBottom_toTopOf="@+id/easyWordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/teamNameText" />
 
     <TextView
         android:id="@+id/timerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="60"
+        android:textColor="@color/red"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="@+id/timerBar"
         app:layout_constraintEnd_toEndOf="@+id/timerBar"
         app:layout_constraintStart_toStartOf="@+id/timerBar"
@@ -53,63 +78,185 @@
 
     <TextView
         android:id="@+id/easyWordText"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/bg_blue_gradient"
+        android:layout_width="224dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_blue"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical|center_horizontal"
         android:padding="5dp"
         android:text="Easy Word"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="@color/whitePrimary"
+        android:textSize="20sp"
+        app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/hardWordText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/hardWordText"
-        android:layout_width="240dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_blue_gradient"
+        android:layout_width="224dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_blue"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical|center_horizontal"
         android:padding="5dp"
         android:text="Hard Word"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="@color/whitePrimary"
+        android:textSize="20sp"
+        app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/celebrityText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/easyWordText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/celebrityText"
-        android:layout_width="240dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_blue_gradient"
+        android:layout_width="224dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_blue"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical|center_horizontal"
         android:padding="5dp"
         android:text="Celebrity"
         android:textAlignment="center"
-        android:textSize="30sp"
+        android:textColor="@color/whitePrimary"
+        android:textSize="20sp"
+        app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/proverbText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hardWordText" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/proverbText"
-        android:layout_width="240dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_blue_gradient"
+        android:layout_width="224dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="46dp"
+        android:background="@drawable/btn_blue"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center_vertical|center_horizontal"
         android:padding="5dp"
         android:text="Proverb"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textSize="30sp"
+        android:textColor="@color/whitePrimary"
+        android:textSize="20sp"
+        app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/minus1"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/easyWordText"
+        app:layout_constraintEnd_toStartOf="@+id/easyWordText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/celebrityText" />
+        app:layout_constraintTop_toTopOf="@+id/easyWordText"
+        app:srcCompat="@drawable/ic_minus" />
+
+    <ImageView
+        android:id="@+id/minus2"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hardWordText"
+        app:layout_constraintEnd_toStartOf="@+id/hardWordText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/hardWordText"
+        app:srcCompat="@drawable/ic_minus" />
+
+    <ImageView
+        android:id="@+id/minus4"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/proverbText"
+        app:layout_constraintEnd_toStartOf="@+id/proverbText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/proverbText"
+        app:srcCompat="@drawable/ic_minus" />
+
+    <ImageView
+        android:id="@+id/minus3"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/celebrityText"
+        app:layout_constraintEnd_toStartOf="@+id/celebrityText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/celebrityText"
+        app:srcCompat="@drawable/ic_minus" />
+
+    <ImageView
+        android:id="@+id/plus1"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/easyWordText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/easyWordText"
+        app:layout_constraintTop_toTopOf="@+id/easyWordText"
+        app:srcCompat="@drawable/ic_plus" />
+
+    <ImageView
+        android:id="@+id/plus2"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/hardWordText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/hardWordText"
+        app:layout_constraintTop_toTopOf="@+id/hardWordText"
+        app:srcCompat="@drawable/ic_plus" />
+
+    <ImageView
+        android:id="@+id/plus3"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/celebrityText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/celebrityText"
+        app:layout_constraintTop_toTopOf="@+id/celebrityText"
+        app:srcCompat="@drawable/ic_plus" />
+
+    <ImageView
+        android:id="@+id/plus4"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/proverbText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/proverbText"
+        app:layout_constraintTop_toTopOf="@+id/proverbText"
+        app:srcCompat="@drawable/ic_plus" />
+
 </android.support.constraint.ConstraintLayout>
