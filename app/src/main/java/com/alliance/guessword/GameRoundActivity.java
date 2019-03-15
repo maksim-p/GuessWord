@@ -25,6 +25,7 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
     DBHelper dbHelper;
     String word = "";
     int score;
+    int limiter1, limiter2, limiter3, limiter4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,11 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
 
         Intent intent = getIntent();
         initializeViews();
+
+        limiter1 = 0;
+        limiter2 = 0;
+        limiter3 = 0;
+        limiter4 = 0;
 
         teamName.setText(intent.getStringExtra("teamName"));
         score = intent.getIntExtra("count", 0);
@@ -88,41 +94,57 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
                 score = score - 1;
                 count.setText("" + score);
                 easyWord.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                limiter1++;
+                if (limiter1 > 2) hideWord(minus1, plus1, easyWord);
                 break;
             case R.id.plus1:
                 score = score + 1;
                 count.setText("" + score);
                 easyWord.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                limiter1++;
+                if (limiter1 > 2) hideWord(minus1, plus1, easyWord);
                 break;
             case R.id.minus2:
                 score = score - 2;
                 count.setText("" + score);
                 hardWord.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                limiter2++;
+                if (limiter2 > 2) hideWord(minus2, plus2, hardWord);
                 break;
             case R.id.plus2:
                 score = score + 2;
                 count.setText("" + score);
                 hardWord.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                limiter2++;
+                if (limiter2 > 2) hideWord(minus2, plus2, hardWord);
                 break;
             case R.id.minus3:
                 score = score - 3;
                 count.setText("" + score);
                 celebrity.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                limiter3++;
+                if (limiter3 > 2) hideWord(minus3, plus3, celebrity);
                 break;
             case R.id.plus3:
                 score = score + 3;
                 count.setText("" + score);
                 celebrity.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                limiter3++;
+                if (limiter3 > 2) hideWord(minus3, plus3, celebrity);
                 break;
             case R.id.minus4:
                 score = score - 4;
                 count.setText("" + score);
                 proverb.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                limiter4++;
+                if (limiter4 > 2) hideWord(minus4, plus4, proverb);
                 break;
             case R.id.plus4:
                 score = score + 4;
                 count.setText("" + score);
                 proverb.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                limiter4++;
+                if (limiter4 > 2) hideWord(minus4, plus4, proverb);
                 break;
         }
     }
@@ -131,9 +153,13 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                int second = (int) (millisUntilFinished/1000);
+                int second = (int) (millisUntilFinished / 1000);
                 timer.setText(second + "");
-                timerBar.setProgress(1/1000);
+                timerBar.setProgress(1 / 1000);
+                if (easyWord.getVisibility() == View.GONE &&
+                        hardWord.getVisibility() == View.GONE &&
+                        celebrity.getVisibility() == View.GONE && proverb.getVisibility() == View.GONE)
+                    onFinish();
             }
 
             @Override
@@ -147,7 +173,7 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         }.start();
     }
 
-    public String getTheWord(String table, String column){
+    public String getTheWord(String table, String column) {
         String query = "SELECT " + column + " FROM " + table + " ORDER BY RANDOM() LIMIT 1";
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery(query, null);
@@ -158,5 +184,11 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
             word = "no words";
         cursor.close();
         return word;
+    }
+
+    public void hideWord(View minus, View plus, View text) {
+        minus.setVisibility(View.GONE);
+        plus.setVisibility(View.GONE);
+        text.setVisibility(View.GONE);
     }
 }

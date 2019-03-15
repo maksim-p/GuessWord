@@ -8,10 +8,24 @@
     tools:context=".GameRoundActivity">
 
     <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="382dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView11"
+        app:srcCompat="@drawable/bg_color" />
+
+    <ImageView
         android:id="@+id/imageView11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="276dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,10 +69,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:max="60"
         android:background="@drawable/circular_progress_bar_bg"
+        android:max="60"
         android:progressDrawable="@drawable/circular_progress_bar"
-        app:layout_constraintBottom_toTopOf="@+id/easyWordText"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/teamNameText" />
@@ -82,7 +96,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="330dp"
         android:background="@drawable/btn_blue"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center_vertical|center_horizontal"
@@ -93,7 +107,7 @@
         android:textSize="20sp"
         app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/hardWordText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -103,7 +117,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="254dp"
         android:background="@drawable/btn_blue"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center_vertical|center_horizontal"
@@ -114,7 +128,7 @@
         android:textSize="20sp"
         app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/celebrityText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -124,7 +138,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="178dp"
         android:background="@drawable/btn_blue"
         android:fontFamily="@font/roboto_bold"
         android:gravity="center_vertical|center_horizontal"
@@ -135,7 +149,7 @@
         android:textSize="20sp"
         app:autoSizeMaxTextSize="20sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toTopOf="@+id/proverbText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
