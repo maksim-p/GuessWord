@@ -1,7 +1,5 @@
 package com.alliance.guessword;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +14,6 @@ public class NewGameActivity extends AppCompatActivity implements View.OnClickLi
     TextView teamTwo;
     ImageView imageView4;
     ImageView imageView5;
-
-    LinearLayout view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
