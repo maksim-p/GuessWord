@@ -57,10 +57,10 @@ public class GameRoundActivity extends AppCompatActivity {
 
         dbHelper = new DBHelper(this);
 
-        easyWord.setText(getTheWord("easyWords", "easyWord"));
-        hardWord.setText(getTheWord("easyWords", "easyWord"));
-        celebrity.setText(getTheWord("easyWords", "easyWord"));
-        proverb.setText(getTheWord("easyWords", "easyWord"));
+        easyWord.setText(getTheWord("verbs", "verb"));
+        hardWord.setText(getTheWord("verbs", "verb"));
+        celebrity.setText(getTheWord("verbs", "verb"));
+        proverb.setText(getTheWord("verbs", "verb"));
 
         Timer();
 
