@@ -45,10 +45,10 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         count.setText("" + score);
 
         dbHelper = new DBHelper(this);
-        easyWord.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
-        hardWord.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
-        celebrity.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
-        proverb.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+        easyWord.setText(getTheWord("adjectives", "adjective"));
+        hardWord.setText(getTheWord("nouns", "noun"));
+        celebrity.setText(getTheWord("verbs", "verb"));
+        proverb.setText(getTheWord("adverbs", "adverb"));
 
         Timer();
 
@@ -93,56 +93,56 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
             case R.id.minus1:
                 score = score - 1;
                 count.setText("" + score);
-                easyWord.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                easyWord.setText(getTheWord("adjectives", "adjective"));
                 limiter1++;
                 if (limiter1 > 2) hideWord(minus1, plus1, easyWord);
                 break;
             case R.id.plus1:
                 score = score + 1;
                 count.setText("" + score);
-                easyWord.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                easyWord.setText(getTheWord("adjectives", "adjective"));
                 limiter1++;
                 if (limiter1 > 2) hideWord(minus1, plus1, easyWord);
                 break;
             case R.id.minus2:
                 score = score - 2;
                 count.setText("" + score);
-                hardWord.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                hardWord.setText(getTheWord("nouns", "noun"));
                 limiter2++;
                 if (limiter2 > 2) hideWord(minus2, plus2, hardWord);
                 break;
             case R.id.plus2:
                 score = score + 2;
                 count.setText("" + score);
-                hardWord.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                hardWord.setText(getTheWord("nouns", "noun"));
                 limiter2++;
                 if (limiter2 > 2) hideWord(minus2, plus2, hardWord);
                 break;
             case R.id.minus3:
                 score = score - 3;
                 count.setText("" + score);
-                celebrity.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                celebrity.setText(getTheWord("verbs", "verb"));
                 limiter3++;
                 if (limiter3 > 2) hideWord(minus3, plus3, celebrity);
                 break;
             case R.id.plus3:
                 score = score + 3;
                 count.setText("" + score);
-                celebrity.setText(getTheWord("verbsOrAdverbs", "verbOrAdverb"));
+                celebrity.setText(getTheWord("verbs", "verb"));
                 limiter3++;
                 if (limiter3 > 2) hideWord(minus3, plus3, celebrity);
                 break;
             case R.id.minus4:
                 score = score - 4;
                 count.setText("" + score);
-                proverb.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                proverb.setText(getTheWord("adverbs", "adverb"));
                 limiter4++;
                 if (limiter4 > 2) hideWord(minus4, plus4, proverb);
                 break;
             case R.id.plus4:
                 score = score + 4;
                 count.setText("" + score);
-                proverb.setText(getTheWord("nounsOrAdjectives", "nounOrAdjective"));
+                proverb.setText(getTheWord("adverbs", "adverb"));
                 limiter4++;
                 if (limiter4 > 2) hideWord(minus4, plus4, proverb);
                 break;
