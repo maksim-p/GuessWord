@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class GameRoundActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView timer;
@@ -24,6 +26,7 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
 
     DBHelper dbHelper;
     String word = "";
+    int rnd;
     int score;
     int limiter1, limiter2, limiter3, limiter4;
 
@@ -45,10 +48,20 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         count.setText("" + score);
 
         dbHelper = new DBHelper(this);
-        easyWord.setText(getTheWord("adjectives", "adjective"));
-        hardWord.setText(getTheWord("nouns", "noun"));
-        celebrity.setText(getTheWord("verbs", "verb"));
-        proverb.setText(getTheWord("adverbs", "adverb"));
+
+        if(rand(1,10) > 5){
+            easyWord.setText(getTheWord("adjectives", "adjective"));
+        }else {
+            easyWord.setText(getTheWord("nouns", "noun"));
+        }
+        if(rand(1,10) > 5){
+            hardWord.setText(getTheWord("verbs", "verb"));
+        }else {
+            hardWord.setText(getTheWord("adverbs", "adverb"));
+        }
+
+        celebrity.setText(getTheWord("celebrities", "celebrity"));
+        proverb.setText(getTheWord("proverbs", "proverb"));
 
         Timer();
 
@@ -93,56 +106,72 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
             case R.id.minus1:
                 score = score - 1;
                 count.setText("" + score);
-                easyWord.setText(getTheWord("adjectives", "adjective"));
+                if(rand(1,10) > 5){
+                    easyWord.setText(getTheWord("adjectives", "adjective"));
+                }else {
+                    easyWord.setText(getTheWord("nouns", "noun"));
+                }
                 limiter1++;
                 if (limiter1 > 2) hideWord(minus1, plus1, easyWord);
                 break;
             case R.id.plus1:
                 score = score + 1;
                 count.setText("" + score);
-                easyWord.setText(getTheWord("adjectives", "adjective"));
+                if(rand(1,10) > 5){
+                    easyWord.setText(getTheWord("adjectives", "adjective"));
+                }else {
+                    easyWord.setText(getTheWord("nouns", "noun"));
+                }
                 limiter1++;
                 if (limiter1 > 2) hideWord(minus1, plus1, easyWord);
                 break;
             case R.id.minus2:
                 score = score - 2;
                 count.setText("" + score);
-                hardWord.setText(getTheWord("nouns", "noun"));
+                if(rand(1,10) > 5){
+                    hardWord.setText(getTheWord("verbs", "verb"));
+                }else {
+                    hardWord.setText(getTheWord("adverbs", "adverb"));
+                }
                 limiter2++;
                 if (limiter2 > 2) hideWord(minus2, plus2, hardWord);
                 break;
             case R.id.plus2:
                 score = score + 2;
                 count.setText("" + score);
-                hardWord.setText(getTheWord("nouns", "noun"));
+                if(rand(1,10) > 5){
+                    hardWord.setText(getTheWord("verbs", "verb"));
+                }else {
+                    hardWord.setText(getTheWord("adverbs", "adverb"));
+                }
                 limiter2++;
                 if (limiter2 > 2) hideWord(minus2, plus2, hardWord);
                 break;
             case R.id.minus3:
                 score = score - 3;
                 count.setText("" + score);
-                celebrity.setText(getTheWord("verbs", "verb"));
+                celebrity.setText(getTheWord("celebrities", "celebrity"));
                 limiter3++;
                 if (limiter3 > 2) hideWord(minus3, plus3, celebrity);
                 break;
             case R.id.plus3:
                 score = score + 3;
                 count.setText("" + score);
-                celebrity.setText(getTheWord("verbs", "verb"));
+                celebrity.setText(getTheWord("celebrities", "celebrity"));
                 limiter3++;
                 if (limiter3 > 2) hideWord(minus3, plus3, celebrity);
                 break;
             case R.id.minus4:
                 score = score - 4;
                 count.setText("" + score);
-                proverb.setText(getTheWord("adverbs", "adverb"));
+                proverb.setText(getTheWord("proverbs", "proverb"));
                 limiter4++;
                 if (limiter4 > 2) hideWord(minus4, plus4, proverb);
                 break;
             case R.id.plus4:
                 score = score + 4;
                 count.setText("" + score);
-                proverb.setText(getTheWord("adverbs", "adverb"));
+                proverb.setText(getTheWord("proverbs", "proverb"));
                 limiter4++;
                 if (limiter4 > 2) hideWord(minus4, plus4, proverb);
                 break;
@@ -184,6 +213,12 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
             word = "no words";
         cursor.close();
         return word;
+    }
+
+    public int rand(int min, int max){
+        Random random = new Random();
+        rnd = random.nextInt(max - min + 1) + min ;
+        return rnd;
     }
 
     public void hideWord(View minus, View plus, View text) {
