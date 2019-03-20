@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class NewGameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -30,18 +29,18 @@ public class NewGameActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void onClick(View v){
-        MyDialog dialogFragment = new MyDialog();
+        EditNameDialog dialogFragment = new EditNameDialog();
         Bundle bundle = new Bundle();
         switch (v.getId()) {
             case R.id.imageView4:
                 bundle.putInt("ID",R.id.teamOneStart);
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getSupportFragmentManager(), "dialog");
+                dialogFragment.show(getSupportFragmentManager(), "edit_name_dialog");
                 break;
             case R.id.imageView5:
                 bundle.putInt("ID",R.id.teamTwoStart);
                 dialogFragment.setArguments(bundle);
-                dialogFragment.show(getSupportFragmentManager(), "dialog");
+                dialogFragment.show(getSupportFragmentManager(), "edit_name_dialog");
                 break;
         }
     }

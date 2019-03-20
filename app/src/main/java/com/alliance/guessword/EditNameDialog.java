@@ -2,7 +2,6 @@ package com.alliance.guessword;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -12,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class MyDialog extends DialogFragment {
+public class EditNameDialog extends DialogFragment {
     View dialogView;
     EditText editTeam;
     TextView teamName;
@@ -30,7 +29,7 @@ public class MyDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        dialogView = inflater.inflate(R.layout.dialog, null);
+        dialogView = inflater.inflate(R.layout.edit_name_dialog, null);
 
         changeName = dialogView.findViewById(R.id.changeName);
 

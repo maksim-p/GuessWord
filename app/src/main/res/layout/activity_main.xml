@@ -16,7 +16,6 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/btn_white"
         android:fontFamily="@font/roboto_bold"
-        android:onClick="newGame"
         android:text="Новая игра"
         android:textAllCaps="false"
         android:textColor="@color/gray"

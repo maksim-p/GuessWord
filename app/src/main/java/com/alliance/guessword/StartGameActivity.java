@@ -1,5 +1,7 @@
 package com.alliance.guessword;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -63,6 +65,22 @@ public class StartGameActivity extends AppCompatActivity {
         teamStart.setText("Начинает команда '" + teams.get(currentTeam).getName() + "'");
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("currentTeam", currentTeam);
+        outState.putSerializable("teams", teams);
+
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        currentTeam = savedInstanceState.getInt("currentTeam");
+        teams = (ArrayList<Team>) savedInstanceState.getSerializable("teams");
+    }
+
     public void startRound(View view) {
         Intent intent = new Intent(this, GameRoundActivity.class);
         intent.putExtra("teamName", teams.get(currentTeam).getName());
@@ -89,7 +107,7 @@ public class StartGameActivity extends AppCompatActivity {
     public void checkResult() {
         int score1 = teams.get(0).getScore();
         int score2 = teams.get(1).getScore();
-        if (currentTeam == 0 && (score1 > 25 || score2 > 25)) {
+        if (currentTeam == 0 && (score1 > maxScore || score2 > maxScore)) {
             if (score1 > score2) {
                 teamStart.setText("Победила команда '" + teams.get(0).getName() + "'");
                 startButton.setVisibility(View.GONE);
@@ -101,5 +119,18 @@ public class StartGameActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onBackPressed() {
+        final AlertDialog builder = new AlertDialog.Builder(StartGameActivity.this)
+                .setTitle("Покинуть игру?")
+                .setPositiveButton("Подтвердить", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("Отмена", null)
+                .setCancelable(false)
+                .create();
+        builder.show();
+    }
 }
