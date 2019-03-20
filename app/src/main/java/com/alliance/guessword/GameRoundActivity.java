@@ -185,9 +185,9 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
                 int second = (int) (millisUntilFinished / 1000);
                 timer.setText(second + "");
                 timerBar.setProgress(1 / 1000);
-                if (easyWord.getVisibility() == View.GONE &&
-                        hardWord.getVisibility() == View.GONE &&
-                        celebrity.getVisibility() == View.GONE && proverb.getVisibility() == View.GONE)
+                if (easyWord.getVisibility() == View.INVISIBLE &&
+                        hardWord.getVisibility() == View.INVISIBLE &&
+                        celebrity.getVisibility() == View.INVISIBLE && proverb.getVisibility() == View.INVISIBLE)
                     onFinish();
             }
 
@@ -222,8 +222,8 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void hideWord(View minus, View plus, View text) {
-        minus.setVisibility(View.GONE);
-        plus.setVisibility(View.GONE);
-        text.setVisibility(View.GONE);
+        minus.setVisibility(View.INVISIBLE);
+        plus.setVisibility(View.INVISIBLE);
+        text.setVisibility(View.INVISIBLE);
     }
 }
