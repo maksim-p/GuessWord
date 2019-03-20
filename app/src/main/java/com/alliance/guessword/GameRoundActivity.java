@@ -30,6 +30,11 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
     int score;
     int limiter1, limiter2, limiter3, limiter4;
 
+    CountDownTimer countDownTimer;
+
+    private static final long START_TIME_IN_MILLIS = 60000;
+    private long currentTimeInMillis = START_TIME_IN_MILLIS;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +68,7 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         celebrity.setText(getTheWord("celebrities", "celebrity"));
         proverb.setText(getTheWord("proverbs", "proverb"));
 
-        Timer();
+        startTimer();
 
         ObjectAnimator anim = ObjectAnimator.ofInt(timerBar, "progress", 60, 0);
         anim.setDuration(59000);
@@ -178,8 +183,20 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void Timer() {
-        new CountDownTimer(60000, 1000) {
+    @Override
+    protected void onStop() {
+        super.onStop();
+        countDownTimer.cancel();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        startTimer();
+    }
+
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(currentTimeInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 int second = (int) (millisUntilFinished / 1000);
@@ -189,6 +206,7 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
                         hardWord.getVisibility() == View.INVISIBLE &&
                         celebrity.getVisibility() == View.INVISIBLE && proverb.getVisibility() == View.INVISIBLE)
                     onFinish();
+                currentTimeInMillis = millisUntilFinished;
             }
 
             @Override
@@ -202,7 +220,9 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         }.start();
     }
 
-    public String getTheWord(String table, String column) {
+
+
+    private String getTheWord(String table, String column) {
         String query = "SELECT " + column + " FROM " + table + " ORDER BY RANDOM() LIMIT 1";
         SQLiteDatabase database = dbHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery(query, null);
@@ -215,13 +235,13 @@ public class GameRoundActivity extends AppCompatActivity implements View.OnClick
         return word;
     }
 
-    public int rand(int min, int max){
+    private int rand(int min, int max){
         Random random = new Random();
         rnd = random.nextInt(max - min + 1) + min ;
         return rnd;
     }
 
-    public void hideWord(View minus, View plus, View text) {
+    private void hideWord(View minus, View plus, View text) {
         minus.setVisibility(View.INVISIBLE);
         plus.setVisibility(View.INVISIBLE);
         text.setVisibility(View.INVISIBLE);
